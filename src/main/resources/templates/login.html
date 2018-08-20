@@ -1,0 +1,17 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Favorites login</title>
+
+</head>
+<body>
+
+<form th:action="@{/login}" method="post">
+<label>Username:</label> <input name="username" type="text" />
+<label>Password:</label> <input name="password" type="password" />
+<input name="login" type="submit"/>
+</form>
+
+<p id="error" th:text="${session.error}" th:unless="${session == null}"></p>
+</body>
+</html>

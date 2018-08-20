@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title  th:text="'Favorites: '+ ${session.user.username}"></title>
+</head>
+<body>
+
+<form th:action="@{/AddUser}" method="post">
+    <label>Username:</label> <input name="newusername" type="text" >
+    <label>Password:</label> <input name="newpassword" type="password" >
+    <input name="Add user" type="submit">
+</form>
+
+<form th:action="@{/RemoveUser}" method="post">
+    <label>Username:</label> <input name="removeuser" type="text" />
+    <input name="Remove user" type="submit"/>
+</form>
+
+<form th:action="@{/GetFavUser}" method="get">
+    <label>Username:</label> <input name="favuser" type="text" />
+    <input name="Favorites user" type="submit"/>
+</form >
+
+<form th:action="@{/GetAllFav}" method="get">
+    <input name="allfav" type="submit"/>
+</form>
+
+<table th:name="favorites">
+    <tbody>
+    <tr th:each="fav : ${session.favorites}" th:unless="${session==null}">
+        <td th:text="${fav}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<p id="error" th:text="${session.error}" th:unless="${session == null}"></p>
+</body>
+</html>

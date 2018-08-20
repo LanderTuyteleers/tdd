@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title th:text="'Favorites: '+ ${session.user.username}"></title>
+</head>
+<body>
+
+<table th:name="favorites">
+    <tbody>
+    <tr th:each="fav : ${session.user.favorites}">
+        <td th:text="${fav}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<form th:action="@{/AddFavorite}" method="post">
+    <input name="favorite" type="text">
+    <input name="Add favorite" type="submit">
+</form>
+
+</body>
+</html>
